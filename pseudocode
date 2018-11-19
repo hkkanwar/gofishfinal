@@ -1,0 +1,83 @@
+public class GoFish
+
+print "would you like the instructions on how to play go fish?"
+  if they type "yes"
+    print instructions
+  if they type "no"
+    print "ok, let's get started!"
+
+instantiate random rng as new random
+create arraylist<card> cards
+create player[] players
+
+  public startic Card
+      return (remove card from deck)
+    public decksize
+      return size of card array
+  
+  publice static void
+    instantiate check as new arraylist<card>
+      for i is less than 4, increase variable by one
+        for card c equal card values
+          add c to cards
+          
+    instantiate object h as humanplayer
+    instantiate ai as aiplayer
+    instantiate players as new player[] {h, ai}
+    
+    while number of obtained books is less than 13
+      print "----"
+    
+    create integer variables for the score of the player and for the score of the ai
+      if player's score is greater than the ai's score
+        print "Congrats, you won!"
+      else if ai's score is greater than the player's
+        print "you lost"
+      else
+        print "it's a tie!"
+     
+     create enums for all cards (ace, two-ten, jack, queen, king)
+     
+   class player
+      instantiate arralylist<card> hand as new arraylist<card>
+      create integer variable numbooks
+
+      protected void fish
+        if desk size is greater than 0
+          add hand to draw
+        else
+          print "the deck is empty"
+
+      public player
+        for i increases by one and is less than 8
+          call void fish
+      
+      public boolean hasgiven
+        return the type of card
+      
+      public boolean giveall
+        instantiate arraylist<card> x as new arraylist<card>
+        for i increases by 1 and is less than the hand size
+          if hand at i equals type of card
+            add i to x
+        for c increases by 1 and is less than size of x
+          remove card type
+        return array x
+      
+      boolean askfor
+        create integer tmp = 0
+        if this instaneof humanplayer
+          tmp is 1
+        player other is gofish.plays[tmp]
+        if tmp is 1
+          add card type to aiplayer
+        if card type is other
+          for card c is card type
+            add c to hand
+          return true
+        
+        else
+          return false
+          
+          
+      
