@@ -10,7 +10,7 @@ instantiate random rng as new random
 create arraylist<card> cards
 create player[] players
 
-  public startic Card
+  public static Card
       return (remove card from deck)
     public decksize
       return size of card array
