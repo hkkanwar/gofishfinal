@@ -7,16 +7,16 @@ print "would you like the instructions on how to play go fish?"
     print "ok, let's get started!"
 
 instantiate random rng as new random
-create arraylist<card> cards
-create player[] players
+create arraylist<card> which is the Deck of cards for the game.
+create player[] players 
 
-  public static Card
+create method Cards
       return (remove card from deck)
     public decksize
       return size of card array
   
   publice static void
-    instantiate check as new arraylist<card>
+    instantiate 'check' as new arraylist<card>
       for i is less than 4, increase variable by one
         for card c equal card values
           add c to cards
@@ -29,6 +29,7 @@ create player[] players
       print "----"
     
     create integer variables for the score of the player and for the score of the ai
+    using the calculated score,
       if player's score is greater than the ai's score
         print "Congrats, you won!"
       else if ai's score is greater than the player's
@@ -36,21 +37,21 @@ create player[] players
       else
         print "it's a tie!"
      
-     create enums for all cards (ace, two-ten, jack, queen, king)
+     create enums for all cards (ace, two-ten, jack, queen, king) in order to allow only certain cards to be chosen
      
    class player
       instantiate arralylist<card> hand as new arraylist<card>
-      create integer variable numbooks
+      create integer variable numbooks to keep track of books (4 of the same card)
 
       protected void fish
         if desk size is greater than 0
-          add hand to draw
+          draw new card
         else
           print "the deck is empty"
 
       public player
         for i increases by one and is less than 8
-          call void fish
+          call void fish to draw new card
       
       public boolean hasgiven
         return the type of card
