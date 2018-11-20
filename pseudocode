@@ -80,5 +80,114 @@ create method Cards
         else
           return false
           
+ 
+    protected void fish
+         if deck size is greater than 0
+              add hand to draw
+         else
+              print "the deck is empty!"
+
+ 
+    public int getnumbooks
+        return numbooks
+ 
+    protected Card checkforbooks
+        for card c is less than hand
+            integer num is 0
+            for card d is less than hand 
+               if c equals d
+                  add one to num
+            if num equals 4
+                for integer i is less than 5, add 1
+                   remove c from hand
+                add 1 to numbooks
+                return c
+               
+return null
+ 
+ 
+    
+ 
+    abstract void haveTurn
+ 
+
+ 
+class humanplayer extends Player
+
+    public void haveTurn
+        
+        Scanner scn is the new Scanner(System.in)
+        
+        boolean playing is true;
+        do
+            card book is checkforbooks()
+            if book is not null
+                  print "you got a book!@
+ 
+            if the size of the hand is 0
+                   print "your hand is empty!"
+               break
+
+            else
+                   print "this is your hand" and the hand
+           
+            print "what hand will you ask for?"
+ 
+            create object req
+            try
+                 req is the value of a card
+            catch illegal argument exception
+                "that's not a card in the deck, try again!"
+                continue
+            
+ 
+            if the player's hand does not have req
+            print "this card isn't in your hand, try again."
+                continue
+            
+ 
+            print "you asked for" and req
+            set object playing as askfor(req)
+
+        while playing
+              print "go fish!"
+              call fish
+ 
+class aiplayer extends Player
+
+    set public ArrayList<Card> queries as the new ArrayList<Card>
+    set private integer age as 0
+ 
+    void haveTurn
+    
+        create boolean playing
+        do
+            card book is checkforbooks
+            if book is not null
+                print "the computer got a book of " and book
+            if size of hand equals 0
+                print "the computer's hand is empty."
+                break
+            
+            Card req = aistrat
+            print "the computer asks for" and req
+            set object playing as askfor(req)
+            add one to age
+        while playing
+         print "the computer went fishing"
+        call fish
+    
+ 
+
+    private Card aistrat
+    
+        if age is greater than 2
+        
+        remove oldest entry
+        age equals 0
+
+        for integer i is one less than query size, is greater than -1 and decreases by 1
+            if hand contains i
+            
+                return query with i removed 
           
-      
