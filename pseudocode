@@ -105,12 +105,7 @@ create method Cards
                
 return null
  
- 
-    
- 
     abstract void haveTurn
- 
-
  
 class humanplayer extends Player
 
@@ -145,7 +140,6 @@ class humanplayer extends Player
             print "this card isn't in your hand, try again."
                 continue
             
- 
             print "you asked for" and req
             set object playing as askfor(req)
 
@@ -153,7 +147,7 @@ class humanplayer extends Player
               print "go fish!"
               call fish
  
-class aiplayer extends Player
+class aiplayer extends Player //subclass of player
 
     set public ArrayList<Card> queries as the new ArrayList<Card>
     set private integer age as 0
