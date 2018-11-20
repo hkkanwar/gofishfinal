@@ -67,7 +67,7 @@ create method Cards
       
       boolean askfor
         create integer tmp = 0
-        if this instaneof humanplayer
+        if this is an instance of humanplayer
           tmp is 1
         player other is gofish.plays[tmp]
         if tmp is 1
@@ -83,7 +83,7 @@ create method Cards
  
     protected void fish
          if deck size is greater than 0
-              add hand to draw
+              draw new card
          else
               print "the deck is empty!"
 
@@ -122,7 +122,7 @@ class humanplayer extends Player
         do
             card book is checkforbooks()
             if book is not null
-                  print "you got a book!@
+                  print "you got a book!"
  
             if the size of the hand is 0
                    print "your hand is empty!"
