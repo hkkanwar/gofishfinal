@@ -1,5 +1,6 @@
 package go.fish;
 
+//import files
 import java.util.ArrayList; 
 import java.util.Scanner; 
 import java.util.Random;
@@ -8,7 +9,7 @@ public class GoFish
 {
     static final Random rng = new Random();
     static private ArrayList<Card> cards;
-    static public Player[] Players;
+    static public Player[] Players; //create array for player's card
 
 
  
@@ -28,6 +29,7 @@ public class GoFish
     {
         int ans;
         Scanner s=new Scanner (System.in);
+	//ask user if they want instructions, if not, proceed to game
         System.out.println("Would you like the instructions on how to play Go Fish? Press 1 for yes, 2 for no.");
         ans = s.nextInt();
         if (ans==1){
@@ -63,7 +65,7 @@ public class GoFish
             Players[1].haveTurn();
             System.out.println("----------");
         }
- 
+ 	// keep track of score and using the given conditions, declare winner
         int yScore = Players[0].getNumBooks(); int aiScore = Players[1].getNumBooks();
         if (yScore > aiScore)
             System.out.println("Congratulations, you win "+ yScore + " to "+ aiScore +"!");
@@ -75,7 +77,7 @@ public class GoFish
     }
     
 }
- 
+//create enum of possible cards that user can choose 
 enum Card 
 {
     ACE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, JACK, QUEEN, KING;
@@ -155,7 +157,7 @@ abstract class Player
         response=s.nextInt();
     }
     }
-    
+    //ask user math question
     public void Mathtwo(){
     int response;
     Scanner s=new Scanner (System.in);
@@ -166,7 +168,7 @@ abstract class Player
         response=s.nextInt();
     }
     }
-        
+     //checks if user has 4 of a kind of card  
     protected Card checkForBooks()
     {
         for(Card c: hand) 
