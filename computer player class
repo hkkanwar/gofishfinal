@@ -1,0 +1,48 @@
+
+package go.fish;
+
+import java.util.ArrayList;
+
+class AIPlayer extends Player
+{
+    public ArrayList<Card> queries = new ArrayList<Card>();
+    private int age = 0;
+ 
+    @Override
+    public void haveTurn()
+    {
+        boolean playing;
+        do{
+            Card book = checkForBooks();
+            if(book != null)
+                System.out.println("Your opponent got a book of " + book + "s...");
+            if (hand.size() == 0)
+            {
+                System.out.print("Your opponent's hand is empty.");
+                break;
+            }
+            Card req = aiMagic();
+            System.out.println("Your opponent asks for " + req);
+            playing = askFor(req);
+            age++;
+        } while(playing);
+        System.out.println("Your opponent goes fishing.");
+        fish();
+    }
+ 
+	//The AI's strategy is to first ask for things you asked for, since you have those things. If that doesn't work, it guesses a random value.
+    private Card aiMagic()
+    {
+        if (age>2)
+        {
+            queries.remove(queries.size()-1); //gets rid of oldest entry so it won't keep asking the same thing
+            age=0;                        
+        }
+        for(int i=queries.size()-1; i>-1; i--) 
+            if (hand.contains(queries.get(i)))
+            {
+                return queries.remove(i); //once it extracts a card from you, it will stop asking for the same card
+            }                            
+        return hand.get(GoFish.rng.nextInt(hand.size()));
+    }
+}
