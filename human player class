@@ -36,8 +36,10 @@ class HumanPlayer extends Player
             try{
                 req = Card.valueOf(scn.next().toUpperCase());
             }
+            // if user enters illegal expression, they must answer math question
             catch(IllegalArgumentException e){ //If what player said is not in Card 
                 System.out.println("Card not present in this deck. To continue, answer the question:");
+                //calling method for math function
                 Mathtwo();
                 continue;
             }
