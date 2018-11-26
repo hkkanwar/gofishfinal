@@ -1,0 +1,59 @@
+
+package go.fish;
+
+import java.util.Scanner;
+
+class HumanPlayer extends Player
+{
+    @Override
+    public void haveTurn()
+    {
+
+        Scanner scn = new Scanner(System.in);
+        
+        boolean playing = true;
+        do{
+            Card book = checkForBooks();
+            if(book != null)
+                System.out.println("You got a book of " + book + "s!");
+ 
+            if (hand.isEmpty())
+            {
+                System.out.print("Your hand is empty, you must "); 
+                break;
+            }
+            else
+            {
+                System.out.print("Your hand:");
+                for(Card c: hand)
+                    System.out.print(c + " ");
+                System.out.println();
+            }
+ 
+            System.out.println("Ask opponent for what card?");
+ 
+            Card req;
+            try{
+                req = Card.valueOf(scn.next().toUpperCase());
+            }
+            catch(IllegalArgumentException e){ //If what player said is not in Card 
+                System.out.println("Card not present in this deck. To continue, answer the question:");
+                Mathtwo();
+                continue;
+            }
+ 
+            if(!hand.contains(req))
+            {
+                System.out.println("You may not ask for a card you have none of. To continue, answer the question:");
+                Mathone();
+                continue;
+            }
+ 
+            System.out.println("You ask for a " + req);
+            playing = askFor(req); 
+        } while(playing);
+        System.out.println("Go fish!");
+        fish();
+    }
+}
+ 
