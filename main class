@@ -71,7 +71,9 @@ public class GoFish
             System.out.println("You lost "+ yScore + " to "+ aiScore +":/");
         else
             System.out.println("It's a tie, you both have "+yScore);
+    System.out.println("Hall of fame: Jasmine^2, Harsimran, Owen^2, Melanie");
     }
+    
 }
  
 enum Card 
@@ -112,7 +114,8 @@ abstract class Player
         if (this instanceof HumanPlayer)
             tmp = 1;
         Player other = GoFish.Players[tmp];
-
+        
+//Used for the computer's strategy
         if (tmp==1)
             ((AIPlayer) other).queries.add(cType);
 
@@ -189,100 +192,3 @@ abstract class Player
  
 }
  
-class HumanPlayer extends Player
-{
-    @Override
-    public void haveTurn()
-    {
-
-        Scanner scn = new Scanner(System.in);
-        
-        boolean playing = true;
-        do{
-            Card book = checkForBooks();
-            if(book != null)
-                System.out.println("You got a book of " + book + "s!");
- 
-            if (hand.isEmpty())
-            {
-                System.out.print("Your hand is empty, you must "); 
-                break;
-            }
-            else
-            {
-                System.out.print("Your hand:");
-                for(Card c: hand)
-                    System.out.print(c + " ");
-                System.out.println();
-            }
- 
-            System.out.println("Ask opponent for what card?");
- 
-            Card req;
-            try{
-                req = Card.valueOf(scn.next().toUpperCase());
-            }
-            catch(IllegalArgumentException e){ 
-                System.out.println("Card not present in this deck. To continue, answer the question:");
-                Mathtwo();
-                continue;
-            }
- 
-            if(!hand.contains(req))
-            {
-                System.out.println("You may not ask for a card you have none of. To continue, answer the question:");
-                Mathone();
-                continue;
-            }
- 
-            System.out.println("You ask for a " + req);
-            playing = askFor(req); 
-        } while(playing);
-        System.out.println("Go fish!");
-        fish();
-    }
-}
- 
-class AIPlayer extends Player
-{
-    public ArrayList<Card> queries = new ArrayList<Card>();
-    private int age = 0;
- 
-    @Override
-    public void haveTurn()
-    {
-        boolean playing;
-        do{
-            Card book = checkForBooks();
-            if(book != null)
-                System.out.println("Your opponent got a book of " + book + "s...");
-            if (hand.size() == 0)
-            {
-                System.out.print("Your opponent's hand is empty.");
-                break;
-            }
-            Card req = aiMagic();
-            System.out.println("Your opponent asks for " + req);
-            playing = askFor(req);
-            age++;
-        } while(playing);
-        System.out.println("Your opponent goes fishing.");
-        fish();
-    }
- 
-	//The AI's strategy is to first ask for things you asked for, since you have those things. If that doesn't work, it guesses a random value.
-    private Card aiMagic()
-    {
-        if (age>2)
-        {
-            queries.remove(queries.size()-1); 
-            age=0;                          
-        }
-        for(int i=queries.size()-1; i>-1; i--) 
-            if (hand.contains(queries.get(i)))
-            {
-                return queries.remove(i); 
-            }                            
-        return hand.get(GoFish.rng.nextInt(hand.size()));
-    }
-}
